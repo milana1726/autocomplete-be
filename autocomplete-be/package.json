@@ -1,0 +1,30 @@
+{
+    "name": "autocomplete-be",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "format": "prettier . --write .",
+        "lint": "eslint .",
+        "start": "ts-node src/server.ts"
+    },
+    "keywords": [],
+    "author": "Liudmyla Melnychuk",
+    "license": "ISC",
+    "description": "Backend for AutoComplete function",
+    "dependencies": {
+        "@tsconfig/node20": "^20.1.5",
+        "@types/node": "^22.15.2",
+        "@typescript-eslint/eslint-plugin": "^8.31.0",
+        "@typescript-eslint/parser": "^8.31.0",
+        "eslint": "^9.25.1",
+        "eslint-config-prettier": "^10.1.2",
+        "eslint-plugin-prettier": "^5.2.6",
+        "prettier": "^3.5.3",
+        "tsc-watch": "^6.2.1",
+        "typescript": "^5.8.3",
+        "typescript-eslint": "^8.31.0"
+    },
+    "devDependencies": {
+        "ts-node": "^10.9.2"
+    }
+}
