@@ -8,15 +8,17 @@ export const handler = async (
 ): Promise<void> => {
     const parseURL = new URL(req.url ?? '', `http://${req.headers.host}`);
     if (req.method !== 'GET' || parseURL.pathname !== '/') {
-        res.writeHead(404, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ error: 'Not Found' }));
+        res
+            .writeHead(404, { 'Content-Type': 'application/json' })
+            .end(JSON.stringify({ error: 'Not Found' }));
         return;
     }
 
     const prefix = parseURL.searchParams.get('complete');
     if (!prefix) {
-        res.writeHead(400, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ error: 'Missing complete parameter' }));
+        res
+            .writeHead(400, { 'Content-Type': 'application/json' })
+            .end(JSON.stringify({ error: 'Missing complete parameter' }));
         return;
     }
 
