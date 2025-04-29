@@ -1,0 +1,1 @@
+export declare function createAutoComplete(arr: string[]): (prefix: string | null) => string[];
