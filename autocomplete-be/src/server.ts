@@ -6,7 +6,7 @@ import { LoadCities } from './load-cities';
 const PORT = 3000;
 
 const citiesFilePath = path.join(__dirname, 'cities.json');
-const cities: LoadCities = new LoadCities(citiesFilePath);
+const cities = new LoadCities(citiesFilePath);
 
 const server = createServer((req: IncomingMessage, res: ServerResponse) =>
     handler(req, res, cities)

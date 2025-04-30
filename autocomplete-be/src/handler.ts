@@ -18,15 +18,29 @@ export const handler = async (
     if (!prefix) {
         res
             .writeHead(400, { 'Content-Type': 'application/json' })
-            .end(JSON.stringify({ error: 'Missing complete parameter' }));
+            .end(JSON.stringify({ error: 'Bad Request. Missing complete parameter' }));
         return;
     }
 
     const suggestions = cities.getSuggestions(prefix);
+
+    const lastModified = cities.getLastModified();
+    const ifModifiedSince = req.headers['if-modified-since'];
+
+    if (ifModifiedSince) {
+        const clientDate = new Date(ifModifiedSince);
+        const serverDate = new Date(lastModified);
+
+        if (!isNaN(clientDate.getTime()) && clientDate.getTime() === serverDate.getTime()) {
+            res.writeHead(304).end();
+            return;
+        }
+    }
+
     res.writeHead(200, {
         'Content-Type': 'application/json',
         'Cache-Control': 'public, max-age=3600',
-        'Last-Modified': cities.getLastModified(),
+        'Last-Modified': lastModified,
     });
 
     res.end(JSON.stringify({ suggestions }));
