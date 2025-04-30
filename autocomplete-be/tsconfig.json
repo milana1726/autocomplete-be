@@ -10,5 +10,6 @@
         "skipLibCheck": true,
         "moduleResolution": "node",
         "resolveJsonModule": true
-    }
+    },
+    "include": ["src/**/*", "src/cities.json"]
 }
