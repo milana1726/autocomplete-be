@@ -3,7 +3,7 @@ import { handler } from './handler';
 import path from 'path';
 import { LoadCities } from './load-cities';
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const citiesFilePath = path.join(__dirname, 'cities.json');
 const cities = new LoadCities(citiesFilePath);
